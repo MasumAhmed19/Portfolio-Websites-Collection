@@ -3,16 +3,9 @@ let currentPage = 1;
 let allData = []; // Store all fetched data
 
 const loadData = async () => {
-    try {
-        const response = await fetch('./assets/websiteinfo.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        allData = await response.json(); // Save all data for pagination
-        displayData();
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+    const response = await fetch('./assets/websiteinfo.json');
+    allData = await response.json(); // Save all data for pagination
+    displayData();
 };
 
 function displayData() {
@@ -48,7 +41,7 @@ function displayData() {
     }
 }
 
-// Add event listener to "Load More" button
+
 document.getElementById('loadMore').addEventListener('click', () => {
     currentPage++;
     displayData();
